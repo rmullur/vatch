@@ -1,0 +1,92 @@
+<head>
+     {% load static %}
+     <!-- Prism CSS -->
+     <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+     <link href="https://unpkg.com/video.js@6.7.1/dist/video-js.css" rel="stylesheet">
+     <!-- <link href="//vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
+     <script src="//vjs.zencdn.net/7.3.0/video.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">V:ATCH!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/help">Help</a>
+        </li>
+        {% if user.is_authenticated %}
+           <li class="nav-item active">
+             <a class="nav-link" href="/account">{{user.username|title}}</a>
+           </li>
+           <li class="nav-item active">
+             <a class="nav-link" href="/stream/{{user.username}}">My Stream</a>
+           </li>
+           <li class="nav-item active">
+             <a class="nav-link" href="/logout">Logout</a>
+           </li>
+        {% else %}
+           <li class="nav-item active">
+             <a class="nav-link" href="/login">Login</a>
+           </li>
+           <li class="nav-item active">
+             <a class="nav-link" href="/register">Register</a>
+           </li>
+        {% endif %}
+        <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         More
+       </a>
+       <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <a class="dropdown-item" href="#">Action</a>
+         <a class="dropdown-item" href="#">Another action</a>
+         <div class="dropdown-divider"></div>
+         <a class="dropdown-item" href="#">Something else here</a>
+       </div>
+     </li> -->
+   </ul>
+
+   <form class="form-inline my-2 my-lg-0">
+     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+   </form>
+ </div>
+</nav>
+<!-- <header class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-dark rounded-bottom">
+  <div class="pt-md-3 pb-md-4">
+    <h1 class="bd-title mt-0 text-centre text-white">Watch the latest streams now!</h1>
+</header> -->
+
+  {% include 'smain_2/includes/messaging.html' %}
+
+
+  <div class="container">
+  {% block content %}
+  {% endblock %}
+  </div>
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right" >
+    </p>
+    <p>V:atch! MIT License</p>
+  </div>
+</footer>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Prism JS -->
+<script src="{% static "tinymce/js/prism.js" %}"></script>

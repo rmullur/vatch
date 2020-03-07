@@ -1,0 +1,29 @@
+{% extends 'smain_2/header.html' %}
+
+
+{% block content %}
+
+<br>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Create new item</h5s>
+  </div>
+</div>
+  <br>
+  <a href="/newpost" class="btn btn-primary">Go</a>
+
+
+<form method="POST" action="/newpost/item_title/">
+  {% csrf_token %}
+
+      <div class="form-group">
+      <label for="item_title">Title</label>
+      <input type="text" class="form-control" name="item_title" value="{{item_title}}">
+
+      <input type="submit"  value="Submit">
+      </div>
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'smain_2/header.html' %}
+
+{% block content %}
+<style>
+a#Home{
+  margin-left:27%
+}
+div#Post{
+  margin-left: 25%
+
+}
+</style>
+<br>
+<div id="Post"class="row-cols-md-2">
+    <div class="text-center">
+       <h5>{{tutorials.tutorial_title}}</h5>
+    </div>
+    <div class="col-2 mb-2">
+    <div class="card text-white bg-dark mb-4" style="width: 24rem;">
+     <div class="card-body">
+       <p class="card-text">Published {{tutorials.tutorial_published}}</p>
+       <p>{{tutorials.tutorial_content|safe}}</p>
+     </div>
+   </div>
+   </div>
+
+ </div>
+<div class="container">
+<div class="row mb-2">
+<a id="Home" href="/" class="btn btn-primary">Home</a>
+</div>
+</div>
+
+ {% endblock %}
