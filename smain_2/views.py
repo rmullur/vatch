@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect , get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
-from .models import Video
+from .models import Video,UserProfile
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
@@ -17,7 +17,7 @@ def init_video(user):
     video = Video(username=user,stream_key=user.profile.user_streamkey)
     video.save()
 
-def init_video(user):
+def init_profile(user):
     profile = UserProfile(username=user)
     profile.save()
 
@@ -75,9 +75,12 @@ def login_request(request):
 def help_request(request):
     return render(request = request,
                        template_name='smain_2/help.html')
-def account_request(request):
+
+def account_request(request,username):
+    user = User.objects.get(username=username)
+    profile = UserProfile.objects.get(username=user)
     return render(request = request,
-                       template_name='smain_2/account.html')
+                       template_name='smain_2/account.html',context={"profile":profile})
 
 def post(request,stream_key):
       video   = get_object_or_404(Video,stream_key=stream_key)
