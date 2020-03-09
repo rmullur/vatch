@@ -11,7 +11,7 @@ urlpatterns = [
         path("logout",views.logout_request, name="logout"),
         path("login",views.login_request, name="login"),
         path("help",views.help_request, name="help"),
-        path("account",views.account_request, name="account"),
+        path("account/<slug:username>/",views.account_request, name="account"),
         path("stream/<slug:username>/",views.stream, name="stream_ref"),
         path("viewstream/<slug:stream_key>/",views.watch_video, name="video_viewer"),
 
