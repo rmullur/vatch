@@ -1,4 +1,3 @@
-# smain_2
+# V:atch
 
-
-A Django App for Video Streaming Platform
+A Live Streaming Django App 
