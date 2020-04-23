@@ -19,7 +19,7 @@ div#stream_key{
   <p>{{video.stream_key}}</p>
   <div>
 {% else %}
-  <<p>No stream key</p>
+  <p>No stream key</p>
 {% endif %}
 
 <video id="video1" width=1200 height=600 controls preload="none" autoplay'></video>
@@ -27,7 +27,7 @@ div#stream_key{
   var video = document.getElementById('video1');
   if(Hls.isSupported()) {
     var hls = new Hls();
-    hls.loadSource('https://127.0.0.1:8080{{ MEDIA_URL }}{{video.stream_key}}.m3u8');
+    hls.loadSource('http://159.65.158.250:8001{{ MEDIA_URL }}{{video.stream_key}}.m3u8');
     hls.attachMedia(video);
     hls.on(Hls.Events.MANIFEST_PARSED,function() {
       video.play();

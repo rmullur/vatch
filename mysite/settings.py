@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^m4+kis(@l+-!-9yr0%2=v$knbjy%!*ge9_ux8uoesm+w-y2-w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['159.65.158.250','www.vatch.in']
 
 
 
@@ -165,6 +165,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-MEDIA_ROOT= '/home/rishi/mysite/smain_2/media/'
-MEDIA_URL= '/home/rishi/mysite/smain_2/media/'
+STATIC_ROOT = "/root/vatch/smain_2/static/"
+MEDIA_ROOT= '/root/vatch/smain_2/media/'
+MEDIA_URL= '/root/vatch/smain_2/media/'

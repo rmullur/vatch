@@ -14,6 +14,7 @@ def homepage(request):
                    template_name='smain_2/home.html',context={"videos":video})
 
 def init_video(user):
+    user = User.objects.get(username=user)
     video = Video(username=user,stream_key=user.profile.user_streamkey)
     video.save()
 
@@ -31,9 +32,10 @@ def register(request):
            #user.profile.user_streamkey = 'Lorem1'
            user.save()
            messages.success(request,f"New account created:{username}")
-           login(request,user)
            init_video(user)
            init_profile(user)
+           print(user.profile.user_streamkey)
+           login(request,user)
            return redirect("smain_2:homepage")
         else:
             for msg in form.error_messages:
@@ -98,7 +100,7 @@ def watch_video(request,stream_key):
 
 def stream(request,username):
     user = User.objects.get(username=username)
-    video = Video.objects.get(stream_key=user.profile.user_streamkey)
+    video = Video.objects.get(username=user)
     return render(request = request,
                        template_name='smain_2/video.html',
                            context={"video":video})
